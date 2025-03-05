@@ -10,6 +10,9 @@ metadata:
   {{ end }}
 spec:
   type: {{ .Values.service.type }}
+  {{- if .loadBalancerIP}}
+  loadBalancerIP: {{.loadBalancerIP}}
+  {{- end}}
   ports:
     - port: {{ .Values.service.port }}
       targetPort: http
@@ -38,6 +41,9 @@ spec:
   type: {{ .type }}
   {{- if .loadBalancerClass}}
   loadBalancerClass: {{.loadBalancerClass}}
+  {{- end}}
+  {{- if .loadBalancerIP}}
+  loadBalancerIP: {{.loadBalancerIP}}
   {{- end}}
   ports:
     - port: {{ .port }}
