@@ -42,8 +42,8 @@ spec:
   {{- if .loadBalancerClass}}
   loadBalancerClass: {{.loadBalancerClass}}
   {{- end}}
-  {{- if .Values.service.loadBalancerIP}}
-  loadBalancerIP: {{.Values.service.loadBalancerIP}}
+  {{- if .loadBalancerIP}}
+  loadBalancerIP: {{.loadBalancerIP}}
   {{- end}}
   ports:
     - port: {{ .port }}
