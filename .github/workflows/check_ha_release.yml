@@ -8,7 +8,7 @@ jobs:
   get-version:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           token: ${{ secrets.GH_PAT }}
       - name: Prepare git
@@ -61,6 +61,7 @@ jobs:
         run: |
           git config user.name "GitHub Action"
           git config user.email "action@github.com"
+          git remote set-url origin https://x-access-token:${{ secrets.GH_PAT }}@github.com/${{ github.repository }}
           git push
       - name: Run second step if the previous was successful
         # if: steps.ha-version.outputs.changed == 'true' || steps.code-server-version.outputs.changed == 'true'
